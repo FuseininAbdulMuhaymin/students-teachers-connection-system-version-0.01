@@ -74,5 +74,3 @@ def delete_teacher(db:Session,teacher_id:int):
     return teacher
 
 
-
-

@@ -19,6 +19,6 @@ class Student(Base):
     username=Column(String,unique=True)
     email = Column(String,unique=True) 
     
-    
+    teacher_id = Column(Integer,ForeignKey("teachers.id"))
     
     teacher = relationship("Teachers" ,back_populates="students")

@@ -6,7 +6,6 @@ class TeacherModel(BaseModel):
     username:str
     email:EmailStr
 class TeacherCreate(TeacherModel):
-    
     age:int
     password:str
 class TeacherUpdate(TeacherModel):

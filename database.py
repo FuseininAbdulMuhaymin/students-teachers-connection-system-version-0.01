@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
 DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
 if not DATABASE_URL:
     raise ValueError("SQLALCHEMY_DATABASE_URL IS NOT WORKING")
