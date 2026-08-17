@@ -6,7 +6,7 @@ from auth.security import(verify_password,create_access_token)
 
 
 #The Logic behind  Registering a Teacher
-def register_teacher(db:Session,username,email:str,password:str,teacher):
+def register_teacher(db:Session,username:str,email:str,password:str,teacher):
     existing_email = get_teacher_by_email(db,email)
     if existing_email:
         raise HTTPException(status_code= status.HTTP_400_BAD_REQUEST,detail="Email alreaddy registered")
@@ -27,5 +27,19 @@ def register_teacher(db:Session,username,email:str,password:str,teacher):
     )
 
     return teacher
-def  authenticate_teacher(db:Session,username:str,password:str)
-#Finding the teacher in  the database';.,
+
+#Loging  as teacher 
+def logging_teacher(db:Session,username:str,email:str,password:str,teacher)
+    existing_email = get_teacher_by_email(db,email)
+    if email != existing_email:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+    
+hashes_password = hash_password(password) 
+
+teacher = create_teacher(
+    db = db,
+    username = username,
+    email=email,
+    hash_password = hash_password
+)
+ return teeacher
