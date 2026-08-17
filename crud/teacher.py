@@ -17,10 +17,7 @@ from fastapi import HTTPException,status
 def get_teacher_by_email(db:Session,email:str):
     db.query(Teachers).filter(Teachers.email == email).first()
     
-#getting a teacher 
-def get_teacher_username(db:Session,username:str):
-    return (db.query(Teachers).filter(Teachers.username == username)).first()
-
+# 
 #creating a teacher
 def create_teacher(db:Session,teacher:TeacherCreate,password_hash:str):
     db_teacher= Teachers(
@@ -40,6 +37,12 @@ def create_teacher(db:Session,teacher:TeacherCreate,password_hash:str):
 
 
 #Logging Teacher 
+#This is talking to  the database to chec
+def get_teacher_by_username(db:Session,email:str):
+    db.query(Teachers).filter(Teachers.email == email)
+    
+def get_techer
+
 def Log_teacher(db:Session,teacher:TeacherCreate,password_hash:str):
     teacher = Teachers(
         username = teacher.username,
