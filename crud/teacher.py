@@ -17,7 +17,9 @@ from fastapi import HTTPException,status
 def get_teacher_by_email(db:Session,email:str):
     db.query(Teachers).filter(Teachers.email == email).first()
     
-# 
+# def get_teacher_by_username(db:Session,username:str):
+#     db.query(Teachers).filter(Teachers.username == username).first()
+         
 #creating a teacher
 def create_teacher(db:Session,teacher:TeacherCreate,password_hash:str):
     db_teacher= Teachers(
