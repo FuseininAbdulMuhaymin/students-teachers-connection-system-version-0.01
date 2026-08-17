@@ -38,19 +38,15 @@ def create_teacher(db:Session,teacher:TeacherCreate,password_hash:str):
 
 #Logging Teacher 
 #This is talking to  the database to chec
-def get_teacher_by_username(db:Session,email:str):
-    db.query(Teachers).filter(Teachers.email == email)
-    
-def get_techer
+def get_teacher_by_username(db:Session,username:str):
+    return(db.query(Teachers).filter(Teachers.username == username).first())    
 
-def Log_teacher(db:Session,teacher:TeacherCreate,password_hash:str):
-    teacher = Teachers(
-        username = teacher.username,
-        email = teacher.email,
-        password_hash = password_hash
-    )
-    
-    return teacher
+# it job is only to 
+# username
+#    ↓
+# database
+#    ↓
+# teacher / None
 
 
 # GETTING ONE TEACHER
