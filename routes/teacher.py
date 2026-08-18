@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 import models
 from typing import List
-from schemas.teacher import TeacherCreate, TeacherReponse
+from schemas.teacher import TeacherCreate, TeacherReponse,TokenResponse
 from crud.teacher import(
     create_teacher,
     get_teacher,
@@ -11,7 +11,7 @@ from crud.teacher import(
     delete_teacher
 )
 from auth.security import hash_password
-from services.auth_teacher import register_teacher
+from services.auth_teacher import register_teacher,authentication_teacher
 
 router = APIRouter(prefix="/teachers",tags=["Teachers"])
 
@@ -61,11 +61,11 @@ def register(teacher:TeacherCreate,db:Session=Depends(get_db)):
     )
     
 #Logging a Teacher
-@router.post("/Login",response_model=TeacherReponse,status_code=status.HTTP_201_CREATED)
-def login_teacher(teacher:TeacherCreate,db:Session=Depends(get_db)):
-    return login_teacher(
-        email= teacher.email,
-        password=teacher.password
-    )
-    
+@router.post("/login",response_model=TokenResponse)
+def login(credentials:TeacherCreate,db:Session = Depends(get_db)):
+   return authentication_teacher(
+       db=db,
+       username=credentials.username,
+       password=credentials.password
+   )
    
