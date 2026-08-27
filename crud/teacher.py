@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from  model import Teachers
 from schemas.teacher import TeacherCreate
 from fastapi import HTTPException,status
+from database import get_db
 
 # #creating a teacher
 # def create_teacher(db:Session,teacher:TeacherCreate):
@@ -13,29 +14,46 @@ from fastapi import HTTPException,status
 
 
 #CREATING A TEACHER
-#getting a teacher by email
+#checking if username and email already exists 
 def get_teacher_by_email(db:Session,email:str):
-    db.query(Teachers).filter(Teachers.email == email).first()
-    
-# def get_teacher_by_username(db:Session,username:str):
-#     db.query(Teachers).filter(Teachers.username == username).first()
-         
-#creating a teacher
-def create_teacher(db:Session,teacher:TeacherCreate,password_hash:str):
-    db_teacher= Teachers(
-        username = teacher.username,
-        email=teacher.email,
-        password_hash=password_hash
+    return(db.query(Teachers).filter(Teachers.email==email.first()))
+def get_teacher_by_username(db:Session,username:str):
+    return (db.query(Teachers).filter(Teachers.username == username).first())
+
+
+def create_teacher(db:Session,username:str,email:str,hashed_password:str):
+    teacher = Teachers(
+        username = username,
+        email = email,
+        hashed_passsword = hashed_password
     )
 
-    # SAVING TO DATABASE
-#Add to session:It prepare the object for insertion 
-    db.add(db_teacher)
-#committing : Save parmanently
-    db.commit()
-#Refresh:Fetch lastest value to postgresSQL
-    db.refresh(db_teacher)
-    return db_teacher
+    db.add(teacher)
+    db.commit() 
+    db.refresh(teacher)
+
+    return teacher
+
+# existing_email = email ==  query.first() .filter()
+# if existing_email not in Session get_db:
+#     def register_a_teacher(db:Session=Depends(get_db)):
+#         username = username,
+#         email = email,
+#         password = password
+# else:
+#     raise HTTPException(status_code=status.201)
+
+# existing_username = username query.first() .filter()
+# if existing_username  not in Session  get_db:
+#     def register_a_teacher(db:Session=Depends(get_db)):
+#         username = username,
+#         email = email,
+#         password  = password
+# else:
+#     raise HTTPException(status_code=status.201)
+ 
+
+
 
 
 #Logging Teacher 
@@ -56,7 +74,7 @@ def get_teacher_by_username(db:Session,username:str):
 def get_teacher(db:Session,teacher_id:int):
     teacher = db.query(Teachers)
 
-#def get All Teacher. it the same as select
+#def get All  Teacher.It the same as select
 def get_teachers(db:Session):
     return db.query(Teachers).all
 
