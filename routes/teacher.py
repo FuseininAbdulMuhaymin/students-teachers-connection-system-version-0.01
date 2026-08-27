@@ -2,7 +2,7 @@ from fastapi import APIRouter,Depends,HTTPException,status
 from sqlalchemy.orm import Session
 from database import get_db
 import models
-from typing import List
+# from typing import List
 from schemas.teacher import TeacherCreate, TeacherReponse,TokenResponse
 from crud.teacher import(
     create_teacher,
@@ -46,26 +46,26 @@ def remove_teacher(
     teacher_id:int,
     db:Session = Depends(get_db)
 ):
+ 
     return delete_teacher(db,teacher_id)
 
-
-#Registering a Teacher in 
-@router.post("/register",response_model=TeacherReponse,status_code=status.HTTP_201_CREATED)
-def register(teacher:TeacherCreate,db:Session=Depends(get_db)):
-    
+##Registing a user 
+@router.post("/",response_model=TeacherCreate)
+async def  register_teacher(teacher:TeacherCreate,db:Session = Depends(get_db)):
     return register_teacher(
-        db=db,
-        username=teacher.username,
-        email=teacher.email,
-        password=teacher.password
+    db=db,
+    teacher = teacher
     )
+
+
     
-#Logging a Teacher
-@router.post("/login",response_model=TokenResponse)
-def login(credentials:TeacherCreate,db:Session = Depends(get_db)):
-   return authentication_teacher(
-       db=db,
-       username=credentials.username,
-       password=credentials.password
-   )
+# #Logging a Teacher
+# @router.post("/login",response_model=TokenResponse)
+# def login(credentials:TeacherCreate,db:Session = Depends(get_db)):
+#    return authentication_teacher(
+#        db=db,
+#        username=credentials.username,
+#        password=credentials.password
+#    )
+   
    
