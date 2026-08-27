@@ -1,5 +1,20 @@
 AUTHENTICATE A USER :Prove that the person making the request is the user they claim to be.
-
+ ####### HOW  THE OVERALL ARCHITURE OF REGISTER SHOULD BE 
+   POST request
+     ↓
+ROUTE
+     ↓
+Registration logic
+     ↓
+Check if teacher exists
+     ↓
+Hash password
+     ↓
+CRUD function
+     ↓
+DATABASE
+     ↓
+Return safe response
 
 THIS IS AN EXAMPLE OF WHAT  THE FLOW  FOR  LOGGING IN A USER  AFTER  CREATING A USER AND REGISTERING USER
  User

@@ -8,9 +8,11 @@ class Teachers(Base):
     
     id = Column(Integer,primary_key=True)
     username = Column(String,unique=True)
-    email = Column(String,unique=True,index=True,nullable=False)
+    email = Column(String,unique=True,index=True,nullable=False)    
     password_hash = Column(String,nullable=False)
-    student = relationship("Student",back_populates="teacher")
+  
+    # FIX: Changed "student" to "students" to match back_populates
+    students = relationship("Student", back_populates="teacher")
     
 class Student(Base):
     __tablename__ ="students"
@@ -21,4 +23,5 @@ class Student(Base):
     
     teacher_id = Column(Integer,ForeignKey("teachers.id"))
     
-    teacher = relationship("Teachers" ,back_populates="students")
+    # Matches the updated attribute name in Teachers
+    teacher = relationship("Teachers", back_populates="students")
