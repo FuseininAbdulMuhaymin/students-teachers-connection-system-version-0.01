@@ -10,7 +10,8 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     
     model_config = SettingsConfigDict(env_file=".env")
-    
+
+# Because  am loading from  an env file  have to bring this 
 @lru_cache
 def get_setting():
     return Settings()
