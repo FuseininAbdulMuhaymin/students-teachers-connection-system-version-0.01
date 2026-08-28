@@ -6,6 +6,7 @@ class TeacherModel(BaseModel):
     username:str
     email:EmailStr
 class TeacherCreate(TeacherModel):
+    id:int
     password:str
 class TokenResponse(BaseModel):
     access_token:str
@@ -18,4 +19,4 @@ class TeacherInDB(TeacherModel):
     hashed_password:str
 
     class Config:
-        from_attribute = True
+        from_attribute = True 

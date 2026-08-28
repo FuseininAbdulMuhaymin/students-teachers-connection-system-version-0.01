@@ -51,10 +51,10 @@ def remove_teacher(
 
 ##Registing a user 
 @router.post("/",response_model=TeacherCreate)
-async def  register_teacher(teacher:TeacherCreate,db:Session = Depends(get_db)):
+async def  create_register_teacher(teacher_in:TeacherCreate,db:Session = Depends(get_db)):
     return register_teacher(
     db=db,
-    teacher = teacher
+    teacher_in = teacher_in
     )
 
 

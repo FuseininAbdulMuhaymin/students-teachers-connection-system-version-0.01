@@ -25,7 +25,7 @@ def hash_password(password: str) -> str:
     """Turns a plain password into a hashed one."""
     return password_hashed.hash(password)
 
-def verify_password(plain_password: str, hashed_password: str) -> bool:
+def verify_password(plain_password: str, hashed_password:str) -> bool:
     """Compare the typed in password to the one in the database."""
     # FIXED: Changed from hash_password to hashed_password
     return password_hashed.verify(plain_password, hashed_password)

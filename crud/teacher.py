@@ -16,9 +16,9 @@ from database import get_db
 #CREATING A TEACHER
 #checking if username and email already exists 
 def get_teacher_by_email(db:Session,email:str):
-    return(db.query(Teachers).filter(Teachers.email==email.first()))
+    return db.query(Teachers).filter(Teachers.email==email.first())
 def get_teacher_by_username(db:Session,username:str):
-    return (db.query(Teachers).filter(Teachers.username == username).first())
+    return db.query(Teachers).filter(Teachers.username == username).first()
 
 
 def create_teacher(db:Session,username:str,email:str,hashed_password:str):
