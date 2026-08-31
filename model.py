@@ -9,7 +9,7 @@ class Teachers(Base):
     id = Column(Integer,primary_key=True)
     username = Column(String,unique=True)
     email = Column(String,unique=True,index=True,nullable=False)    
-    password_hash = Column(String,nullable=False)
+    hashed_password = Column(String,nullable=False)
   
     # FIX: Changed "student" to "students" to match back_populates
     students = relationship("Student", back_populates="teacher")

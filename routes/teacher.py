@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 import models
 # from typing import List
-from schemas.teacher import TeacherCreate, TeacherReponse,TokenResponse
+from schemas.teacher import TeacherCreate, TeacherReponse,TokenResponse,Login
 from crud.teacher import(
     create_teacher,
     get_teacher,
@@ -11,21 +11,10 @@ from crud.teacher import(
     delete_teacher
 )
 from auth.security import hash_password
-from services.auth_teacher import register_teacher,authentication_teacher
+from services.auth_teacher import register_new_teacher,
 
 router = APIRouter(prefix="/teachers",tags=["Teachers"])
 
-
-
-    
-    
-#Teacher  Endpoint
-# @router.post("/",response_model=TeacherReponse)
-# def create_teacher(
-#     teacher:TeacherCreate,
-#     db:Session = Depends(get_db)
-# ):
-#     return  create_teacher(db,teacher)
 
 ##get all teachers
 @router.get("/",response_model=TeacherReponse)
@@ -52,20 +41,11 @@ def remove_teacher(
 ##Registing a user 
 @router.post("/",response_model=TeacherCreate)
 async def  create_register_teacher(teacher_in:TeacherCreate,db:Session = Depends(get_db)):
-    return register_teacher(
-    db=db,
-    teacher_in = teacher_in
-    )
+    return register_new_teacher(db=db,teacher_in = teacher_in)
 
 
     
-# #Logging a Teacher
-# @router.post("/login",response_model=TokenResponse)
-# def login(credentials:TeacherCreate,db:Session = Depends(get_db)):
-#    return authentication_teacher(
-#        db=db,
-#        username=credentials.username,
-#        password=credentials.password
-#    )
-   
-   
+#Logging a Teacher
+@router.post("/auth/Login",response_model=Login)
+async def log_in(teacher_log:Login,db:Session=Depends(get_db)):
+    return teacher_log(db=db,teacher_log = teacher_log)

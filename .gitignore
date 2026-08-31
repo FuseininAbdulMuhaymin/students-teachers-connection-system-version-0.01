@@ -1,0 +1,17 @@
+# --- SECRETS & ENVIRONMENT CONFIGS ---
+.env
+.env.local
+.env.*
+!.env.example
+
+# --- PYTHON BUNDLES & VIRTUAL ENVS ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# --- ALEMBIC CONFIGURATION ---
+alembic.ini

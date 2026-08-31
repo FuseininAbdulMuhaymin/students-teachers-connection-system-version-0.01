@@ -16,16 +16,16 @@ from database import get_db
 #CREATING A TEACHER
 #checking if username and email already exists 
 def get_teacher_by_email(db:Session,email:str):
-    return db.query(Teachers).filter(Teachers.email==email.first())
+    return (db.query(Teachers).filter(Teachers.email==email).first())
 def get_teacher_by_username(db:Session,username:str):
-    return db.query(Teachers).filter(Teachers.username == username).first()
+    return (db.query(Teachers).filter(Teachers.username == username).first())
 
 
 def create_teacher(db:Session,username:str,email:str,hashed_password:str):
     teacher = Teachers(
         username = username,
         email = email,
-        hashed_passsword = hashed_password
+        hashed_password = hashed_password
     )
 
     db.add(teacher)
@@ -34,32 +34,25 @@ def create_teacher(db:Session,username:str,email:str,hashed_password:str):
 
     return teacher
 
-# existing_email = email ==  query.first() .filter()
-# if existing_email not in Session get_db:
-#     def register_a_teacher(db:Session=Depends(get_db)):
-#         username = username,
-#         email = email,
-#         password = password
-# else:
-#     raise HTTPException(status_code=status.201)
-
-# existing_username = username query.first() .filter()
-# if existing_username  not in Session  get_db:
-#     def register_a_teacher(db:Session=Depends(get_db)):
-#         username = username,
-#         email = email,
-#         password  = password
-# else:
-#     raise HTTPException(status_code=status.201)
- 
-
-
 
 
 #Logging Teacher 
-#This is talking to  the database to chec
-def get_teacher_by_username(db:Session,username:str):
-    return(db.query(Teachers).filter(Teachers.username == username).first())    
+#This is talking to  the database to checking
+def get_teacher_email(db:Session,email:str):
+    return(db.query(Teachers).filter(Teachers.email==email))
+
+def login_teacher(db:Session,email:str,hashed_password:str):
+    logging_teacher = Teachers(
+        email == email,
+        hashed_password = hashed_password  
+    )
+
+    db.add(logging_teacher)
+    db.commit()
+    db.refresh(logging_teacher)
+    
+    return logging_teacher
+    
 
 # it job is only to 
 # username
