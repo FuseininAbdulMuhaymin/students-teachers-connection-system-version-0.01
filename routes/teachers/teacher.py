@@ -3,15 +3,15 @@ from sqlalchemy.orm import Session
 from database import get_db
 import models
 # from typing import List
-from schemas.teacher import TeacherCreate, TeacherReponse,TokenResponse,Login
-from crud.teacher.teacher import(
+from schemas.teachers.teacher import TeacherCreate, TeacherReponse,TokenResponse,Login
+from crud.teachers.teacher import(
     create_teacher,
     get_teacher,
     get_teachers,
     delete_teacher
 )
 from auth.security import hash_password
-from services.auth_teacher import register_new_teacher
+from services.teachers.auth_teacher import register_new_teacher
 from typing import Annotated
 from fastapi.security import OAuth2PasswordRequestForm
 from services import auth_teacher as teacher_service

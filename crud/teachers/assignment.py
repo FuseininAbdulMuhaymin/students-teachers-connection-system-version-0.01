@@ -11,8 +11,8 @@ def create_assignment(db:Session,title:str,description: str,file_url:str,date_du
         description = description,
         file_url = file_url,
         date_due = date_due,
-        class_id = class_id,
-        teacher_id = teacher_id
+        class_id = class_id
+        teacher_id = 
     )
     
     db.add(assign)
