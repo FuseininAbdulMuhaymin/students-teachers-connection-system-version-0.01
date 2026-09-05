@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from  model import Teachers
-from schemas.teacher import TeacherCreate
+from  models.teacher_model import Teachers
+# from schemas.teacher import TeacherCreate
 from fastapi import HTTPException,status
 from database import get_db
 
@@ -34,24 +34,14 @@ def create_teacher(db:Session,username:str,email:str,hashed_password:str):
 
     return teacher
 
-
+   
 
 #Logging Teacher 
 #This is talking to  the database to checking
 def get_teacher_email(db:Session,email:str):
-    return(db.query(Teachers).filter(Teachers.email==email))
+    return db.query(Teachers).filter(Teachers.email==email).first()
 
-def login_teacher(db:Session,email:str,hashed_password:str):
-    logging_teacher = Teachers(
-        email == email,
-        hashed_password = hashed_password  
-    )
 
-    db.add(logging_teacher)
-    db.commit()
-    db.refresh(logging_teacher)
-    
-    return logging_teacher
     
 
 # it job is only to 
@@ -63,26 +53,26 @@ def login_teacher(db:Session,email:str,hashed_password:str):
 
 
 # GETTING ONE TEACHER
-#getting  teacher by ID
-def get_teacher(db:Session,teacher_id:int):
-    teacher = db.query(Teachers)
+# #getting  teacher by ID
+# def get_teacher(db:Session,teacher_id:int):
+#     teacher = db.query(Teachers)
 
-#def get All  Teacher.It the same as select
-def get_teachers(db:Session):
-    return db.query(Teachers).all
+# #def get All  Teacher.It the same as select
+# def get_teachers(db:Session):
+#     return db.query(Teachers).all
 
-#delete Teacher
-def delete_teacher(db:Session,teacher_id:int):
-    teacher= db.query(Teachers).filter(
-        Teachers.id == teacher_id
-    ).first()
-    if not teacher:
-        raise HTTPException(
-            status_code=404,
-            detail="User not found"
-        )
-    db.delete(teacher)
-    db.commit()
-    return teacher
+# #delete Teacher
+# def delete_teacher(db:Session,teacher_id:int):
+#     teacher= db.query(Teachers).filter(
+#         Teachers.id == teacher_id
+#     ).first()
+#     if not teacher:
+#         raise HTTPException(
+#             status_code=404,
+#             detail="User not found"
+#         )
+#     db.delete(teacher)
+#     db.commit()
+#     return teacher
 
 

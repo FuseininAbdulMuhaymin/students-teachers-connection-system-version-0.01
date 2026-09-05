@@ -1,4 +1,4 @@
-###### THIS  EXPLAINS  HOW 
+ ###### THIS  EXPLAINS  HOW 
 
 THE FLOW  ROUTES OF TEACHER
 Receive HTTP request

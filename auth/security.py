@@ -3,11 +3,14 @@ from functools import lru_cache
 import jwt
 from pwdlib import PasswordHash
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from crud.teacher import create_teacher
+from crud.teacher.teacher import create_teacher
 
 class Settings(BaseSettings):
     secret_key: str
     algorithm: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    
+
     
     model_config = SettingsConfigDict(env_file=".env")
 
