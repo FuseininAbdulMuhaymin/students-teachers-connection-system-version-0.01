@@ -32,4 +32,4 @@ def register_new_teacher(db:Session,teacher_in:TeacherCreate):
     )
     
 def log_teacher_in(db:Session,teacher_log:Login):
-    if logging_teacher(dbe)
+    if logging_teacher(db)
