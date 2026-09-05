@@ -2,7 +2,7 @@ from fastapi import HTTPException,status
 from sqlalchemy.orm import Session
 from datetime import timedelta 
 from  auth.security import  hash_password
-from  crud.teacher import teacher as teacher_crud
+from  crud.teachers.teacher import teacher as teacher_crud
 from models.teacher_model import Teachers
 from schemas.teachers.teacher import TeacherCreate,Login,TokenResponse
 from  auth.security import (

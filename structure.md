@@ -48,3 +48,29 @@ app/
     └── student/
         ├── auth.py
         └── assignment.py
+
+
+
+
+        STRUCTURE FOR  CREATING AN ASSIGNMENT 
+
+        Teacher
+   ↓
+POST /assignments/
+   ↓
+Route receives:
+   title
+   description
+   due_date
+   file
+   ↓
+Service:
+   validate teacher
+   validate class
+   save uploaded file
+   generate file_url
+   ↓
+CRUD:
+   create Assignment(...)
+   ↓
+PostgreSQL
