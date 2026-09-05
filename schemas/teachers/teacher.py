@@ -22,4 +22,4 @@ class TeacherInDB(TeacherModel):
     hashed_password:str
 
     class Config:
-        from_attribute = True 
+        from_attribute = True
