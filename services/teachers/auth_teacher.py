@@ -2,10 +2,10 @@ from fastapi import HTTPException,status
 from sqlalchemy.orm import Session
 from datetime import timedelta 
 from  auth.security import  hash_password
-from  crud import teacher as teacher_crud
-from  crud import logging_teacher 
-from model import Teachers
-from schemas.teacher import TeacherCreate,Login
+from  crud.teachers import teacher as teacher_crud
+from  crud impor logging_teacher 
+from models import Teachers
+from schemas.teachers.teacher import TeacherCreate,Login
 
 
 def register_new_teacher(db:Session,teacher_in:TeacherCreate):

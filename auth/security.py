@@ -3,7 +3,7 @@ from functools import lru_cache
 import jwt
 from pwdlib import PasswordHash
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from crud.teacher.teacher import create_teacher
+from crud.teachers.teacher import create_teacher
 
 class Settings(BaseSettings):
     secret_key: str
