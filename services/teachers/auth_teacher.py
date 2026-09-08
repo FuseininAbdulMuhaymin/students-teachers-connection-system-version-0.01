@@ -2,20 +2,13 @@ from fastapi import HTTPException,status
 from sqlalchemy.orm import Session
 from datetime import timedelta 
 from  auth.security import  hash_password
-<<<<<<< HEAD
-from  crud.teachers import teacher as teacher_crud
-from  crud impor logging_teacher 
-from models import Teachers
-from schemas.teachers.teacher import TeacherCreate,Login
-
-=======
-from  crud import teacher as teacher_crud
+from  crud.teachers.teacher import teacher as teacher_crud
 from  crud import logging_teacher 
 from models import Teachers
-from schemas.teacher import TeacherCreate,Login
-from crud import get_teacher_by_email
+from schemas.teachers.teacher import TeacherCreate,Login
+from crud.teachers.teacher import get_teacher_by_email
 from auth import verify_password, create_access_token
->>>>>>> Tryout_new_ideas
+
 
 def register_new_teacher(db:Session,teacher_in:TeacherCreate):
     if teacher_crud.get_teacher_by_email(db,email = teacher_in.email):
