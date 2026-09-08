@@ -13,5 +13,7 @@ __pycache__/
 venv/
 env/
 
+.env
 # --- ALEMBIC CONFIGURATION ---
 alembic.ini
+
