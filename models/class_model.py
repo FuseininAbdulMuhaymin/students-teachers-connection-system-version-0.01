@@ -13,5 +13,5 @@ class Class(Base):
 
     teacher_id = Column(Integer, ForeignKey("teachers.id"))
 
-    teacher = relationship("Teacher", back_populates="classes")
+    teacher = relationship("Teachers", back_populates="classes")
     students = relationship("Student", back_populates="class_")

@@ -9,7 +9,7 @@ class AssignmentModel(BaseModel):
     
 class  AssignmentCreate(BaseModel):
     title:str
-    description:strf
+    description:str
     due_date:datetime
     file_url:str
 class AssignmentResponse(AssignmentModel):
