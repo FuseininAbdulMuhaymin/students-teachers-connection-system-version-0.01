@@ -74,3 +74,19 @@ CRUD:
    create Assignment(...)
    ↓
 PostgreSQL
+
+
+
+
+ the flow for  Assignment
+ Route
+ ↓
+Form + UploadFile
+ ↓
+Service
+ ↓
+save file → get file_url
+ ↓
+CRUD
+ ↓
+Database

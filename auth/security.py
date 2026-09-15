@@ -48,7 +48,7 @@ def authenticate_user(db, username: str, password: str):
     return user
 
 #### ---- JWT GENERATION UTILITY USING LOADED SETTING ------
-# FIXED: Renamed to create_access_token and fixed timedelta keyword (minutes)
+#  Renamed to create_access_token and fixed timedelta keyword (minutes)
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     settings = get_setting()
     

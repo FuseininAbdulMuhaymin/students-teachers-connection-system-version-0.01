@@ -14,7 +14,7 @@ from auth.security import hash_password
 from services.teachers.auth_teacher import register_new_teacher
 from typing import Annotated
 from fastapi.security import OAuth2PasswordRequestForm
-from services import auth_teacher as teacher_service
+from services.teachers import auth_teacher as teacher_service
 
 router = APIRouter(prefix="/teachers",tags=["Teachers"])
 

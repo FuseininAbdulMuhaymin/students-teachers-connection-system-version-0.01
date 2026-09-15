@@ -53,26 +53,26 @@ def get_teacher_email(db:Session,email:str):
 
 
 # GETTING ONE TEACHER
-# #getting  teacher by ID
-# def get_teacher(db:Session,teacher_id:int):
-#     teacher = db.query(Teachers)
+#getting  teacher by ID
+def get_teacher(db:Session,teacher_id:int):
+    teacher = db.query(Teachers)
 
-# #def get All  Teacher.It the same as select
-# def get_teachers(db:Session):
-#     return db.query(Teachers).all
+#def get All  Teacher.It the same as select
+def get_teachers(db:Session):
+    return db.query(Teachers).all
 
-# #delete Teacher
-# def delete_teacher(db:Session,teacher_id:int):
-#     teacher= db.query(Teachers).filter(
-#         Teachers.id == teacher_id
-#     ).first()
-#     if not teacher:
-#         raise HTTPException(
-#             status_code=404,
-#             detail="User not found"
-#         )
-#     db.delete(teacher)
-#     db.commit()
-#     return teacher
+#delete Teacher
+def delete_teacher(db:Session,teacher_id:int):
+    teacher= db.query(Teachers).filter(
+        Teachers.id == teacher_id
+    ).first()
+    if not teacher:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found"
+        )
+    db.delete(teacher)
+    db.commit()
+    return teacher
 
 

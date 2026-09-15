@@ -5,14 +5,15 @@ from datetime import datetime
 
 
 #Creating an assignment
-def create_assignment(db:Session,title:str,description: str,file_url:str,due_date:datetime,teacher_id:int,class_id:int):
+def create_assignment(db:Session,title:str,description: str,file_url:str,due_date:datetime,teacher_id:int,class_id:int,original_filename:str):
     assign = Assignment(
         title = title,
         description = description,
         file_url = file_url,
         due_date = due_date,
         class_id = class_id,
-        teacher_id = teacher_id
+        teacher_id = teacher_id,
+        original_filename=original_filename
     )
     
     db.add(assign)
