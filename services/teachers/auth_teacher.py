@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 from datetime import timedelta 
 from  auth.security import  hash_password
 from  crud.teachers import teacher as teacher_crud
-# from models import Teachers
 from schemas.teachers.teacher import TeacherCreate,Login
 from crud.teachers.teacher import get_teacher_by_email
 from auth.security import verify_password, create_access_token

@@ -2,8 +2,10 @@ from pydantic import BaseModel
 
 
 class StudentCreate(BaseModel):
-    name: str
-    class_id: int
+    username: str
+    email:str
+    password:str 
+    class_id: str
 
 
 class StudentResponse(BaseModel):

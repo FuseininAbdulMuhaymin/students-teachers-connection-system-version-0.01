@@ -13,4 +13,4 @@ class Student(Base):
     class_id = Column(Integer, ForeignKey("classes.id"))
 
 teacher = relationship("Teachers", back_populates="classes")
-students = relationship("Student", back_populates="class_")
+class_ = relationship("Class",back_populates="students")

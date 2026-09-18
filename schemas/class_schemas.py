@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class ClassCreate(BaseModel):
     name: str
-    teacher_id: int
+    teacher_id: str
 
 
 class ClassResponse(BaseModel):
