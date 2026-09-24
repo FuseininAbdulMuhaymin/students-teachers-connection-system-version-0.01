@@ -26,3 +26,9 @@ def create_student(db:Session,username:str,password:str,email:str):
     db.refresh(student)
     
     return student
+
+
+#Loging Teacher
+#This is talking  to the database to checking 
+def get_student_email(db:Session,email:str):
+    return db.query(Student).filter(Student.email == email).first()

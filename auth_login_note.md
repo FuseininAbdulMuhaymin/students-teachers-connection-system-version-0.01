@@ -46,6 +46,7 @@ Your backend will:
 1.FINDING A USER 
 when someone logs in 
 username
+
    ↓
 Database
    ↓
@@ -65,6 +66,7 @@ After successfull  authenctication
 
 User authenticated
        ↓
+
 create_access_token()
        ↓
 JWT

@@ -7,7 +7,9 @@ class StudentCreate(BaseModel):
     password:str 
     class_id: str
 
-
+class TokenResponse(BaseModel):
+    access_token:str
+    token_type:str
 class StudentResponse(BaseModel):
     id: int
     name: str

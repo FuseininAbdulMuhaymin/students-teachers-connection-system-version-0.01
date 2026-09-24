@@ -19,7 +19,7 @@ def register_new_student(db:Session,student_in:StudentCreate):
             detail= "A teacher with this username already exists"
         )
 
-    hash_password =  hash_password(student_in.password)
+    hashed_password =  hash_password(student_in.password)
     
     return student_in.create_teacher(
         db = db,
@@ -27,3 +27,33 @@ def register_new_student(db:Session,student_in:StudentCreate):
         email = student_in.email,
         hash_password = hash_password
     )
+    
+def login_teacher(db:Session,email:str,password:str):
+    #Find the Student 
+    student = get_student_by_email(db=db,email=email)
+    
+    #Check if teacher exists
+    if not student:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="Invalid email or password")
+    
+    #Verify password
+    password_is_valid = verify_password(password,student.hashed_password)
+    
+    if not password_is_valid:
+        raise HTTPException(
+            status_code = status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password "
+        )
+    
+    #4 Create JWT 
+    access_token = create_access_token(
+        data = {"sub":str(student.id)}
+
+    )
+    #5.Return  token .
+    return {
+        "access_token":access_token,
+        "token_type":"bearer"
+    }
+          
+          
