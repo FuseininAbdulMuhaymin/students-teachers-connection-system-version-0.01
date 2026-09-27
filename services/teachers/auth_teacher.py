@@ -22,14 +22,21 @@ def register_new_teacher(db:Session,teacher_in:TeacherCreate):
              
         )
         
+    if teacher_crud.get_teacher_by_teacher_id(db,teacher_id = teacher_in.teacher_id):
+        raise HTTPException(
+            status_code= status.HTTP_406_NOT_ACCEPTABLE,
+            detail = "The teacher Id provided doesn't exists"
+        )
     hashed_password = hash_password(teacher_in.password)
     
     return teacher_crud.create_teacher(
         db=db,
         username=teacher_in.username,
         email = teacher_in.email,
-        hashed_password = hashed_password
+        teacher_id = teacher_in.teacher_id,
+        hashed_password = hashed_password 
     )
+    
     
 def login_teacher(db: Session, email: str, password: str):
 

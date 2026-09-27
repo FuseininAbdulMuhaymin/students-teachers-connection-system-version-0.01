@@ -9,8 +9,11 @@ class Student(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    email = Column(String)
+    hashed_password = Column(String)
+    class_id = Column(String)
+
 
     class_id = Column(Integer, ForeignKey("classes.id"))
 
-teacher = relationship("Teachers", back_populates="classes")
-class_ = relationship("Class",back_populates="students")
+    class_= relationship("Class",back_populates="students")

@@ -27,7 +27,7 @@ def read_teachers(db:Session=Depends(get_db)):
 ##getting a teacher by Id
 @router.get("/{teacher_id}",response_model=TeacherReponse)
 def read_teacher(
-    teacher_id:int,
+    teacher_id:str,
     db:Session = Depends(get_db)
 ):
     return get_teacher(db,teacher_id)

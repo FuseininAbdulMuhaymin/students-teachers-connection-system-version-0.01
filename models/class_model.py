@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from database import Base
-from models.link import teacher_classes
+from models.link import teacher_class_association
 
 
 class Class(Base):
@@ -9,6 +9,7 @@ class Class(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-
-    teachers = relationship("Teachers",secondary=teacher_classes,back_populates="clusess")
-    students = relationship("Teacher",back_populates="class_")
+    
+    
+    students  = relationship("Student", back_populates="class_")
+    teachers  = relationship("Teachers",secondary=teacher_class_association,back_populates="classes")

@@ -17,14 +17,19 @@ from database import get_db
 #checking if username and email already exists 
 def get_teacher_by_email(db:Session,email:str):
     return (db.query(Teachers).filter(Teachers.email==email).first())
+
 def get_teacher_by_username(db:Session,username:str):
     return (db.query(Teachers).filter(Teachers.username == username).first())
 
-
-def create_teacher(db:Session,username:str,email:str,hashed_password:str):
+def get_teacher_by_teacher_id(db:Session,teacher_id:str):
+    return (db.query(Teachers).filter(Teachers.teacher_id == teacher_id).first())
+            
+            
+def create_teacher(db:Session,username:str,email:str,teacher_id:str,hashed_password:str):
     teacher = Teachers(
         username = username,
         email = email,
+        teacher_id = teacher_id,
         hashed_password = hashed_password
     )
 
@@ -52,7 +57,8 @@ def get_teacher_email(db:Session,email:str):
 # teacher / None
 
 
-# GETTING ONE TEACHER
+
+#GETTING ONE TEACHER
 #getting  teacher by ID
 def get_teacher(db:Session,teacher_id:int):
     teacher = db.query(Teachers)
@@ -74,5 +80,3 @@ def delete_teacher(db:Session,teacher_id:int):
     db.delete(teacher)
     db.commit()
     return teacher
-
-
