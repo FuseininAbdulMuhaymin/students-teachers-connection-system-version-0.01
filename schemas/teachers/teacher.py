@@ -5,9 +5,9 @@ from pydantic import EmailStr
 class TeacherModel(BaseModel):
     username:str
     email:EmailStr
-    teacher_id:str
+  
 class TeacherCreate(TeacherModel):
-   
+    teacher_id:str
     password:str
 class Login(TeacherModel):
     email:str

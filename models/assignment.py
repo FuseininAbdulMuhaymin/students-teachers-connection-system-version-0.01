@@ -10,7 +10,7 @@ class  Assignment(Base):
     id = Column(Integer,primary_key=True)
     title = Column(String,unique=True,nullable=False)
     description = Column(String)
-
+    # class_id = Column(String)
     due_date =  Column(DateTime)
     file_url = Column(String,nullable=False)
     created_at = Column(DateTime)

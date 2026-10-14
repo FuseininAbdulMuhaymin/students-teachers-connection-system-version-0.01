@@ -3,14 +3,14 @@ from sqlalchemy.orm import Session
 from database import get_db
 from typing import List
 from schemas.teachers.assignment import AssignmentCreate
-from auth.security import create_access_token
+from auth.security import authenticate_user
 from datetime import datetime
 from typing import Annotated
 from services.teachers.auth_assignment import create_assignment
 
 
 
-router = APIRouter(prefix="/Assginments",tags=["Asignments"])
+router = APIRouter(prefix="/teachers/Assginments",tags=["Asignments"])
 
 #Creating Asssgnment
 @router.post("/")
@@ -21,7 +21,7 @@ async def create_assignment_route(
     due_date: Annotated[datetime, Form()],
     file: Annotated[UploadFile, File()],
     db: Session = Depends(get_db),
-    current_teacher=Depends(create_access_token),
+    current_teacher=Depends(authenticate_user),
 ):
     return await create_assignment(
         db=db,

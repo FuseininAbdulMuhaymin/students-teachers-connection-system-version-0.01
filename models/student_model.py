@@ -11,9 +11,9 @@ class Student(Base):
     name = Column(String)
     email = Column(String)
     hashed_password = Column(String)
-    class_id = Column(String)
+    class_code = Column(String)
 
 
     class_id = Column(Integer, ForeignKey("classes.id"))
 
-    class_= relationship("Class",back_populates="students")
+    class_ = relationship("Class",back_populates="students")

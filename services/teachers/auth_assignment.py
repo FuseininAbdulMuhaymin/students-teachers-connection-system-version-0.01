@@ -7,12 +7,12 @@ from crud.teachers.teacher import create_teacher
 from fastapi.security import OAuth2PasswordRequestForm
 from services.teachers.auth_teacher import login_teacher
 from crud.teachers import assignment as assignment_crud
-from crud.class_crud import class_crud
+from crud.class_crud import classs_crud
 from utils.file_storage import save_assignment_file
 
 async def create_assignment(db:Session,title:str,description:str,file_url:str,due_date:datetime,class_id:str,teacher_id:int,file):
     #1.checking if the class exists
-    school_class = class_crud.get_class(db=db,class_id = class_id)
+    school_class = classs_crud.get_class(db=db,class_id = class_id)
     
     if not school_class:
         raise HTTPException(

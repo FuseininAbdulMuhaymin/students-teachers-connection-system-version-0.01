@@ -21,15 +21,15 @@ def get_teacher_by_email(db:Session,email:str):
 def get_teacher_by_username(db:Session,username:str):
     return (db.query(Teachers).filter(Teachers.username == username).first())
 
-def get_teacher_by_teacher_id(db:Session,teacher_id:str):
-    return (db.query(Teachers).filter(Teachers.teacher_id == teacher_id).first())
+# def get_teacher_by_teacher_id(db:Session,teacher_id:str):
+#     return (db.query(Teachers).filter(Teachers.teacher_id == teacher_id).first())
             
             
-def create_teacher(db:Session,username:str,email:str,teacher_id:str,hashed_password:str):
+def create_teacher(db:Session,username:str,email:str,hashed_password:str):
     teacher = Teachers(
         username = username,
         email = email,
-        teacher_id = teacher_id,
+        # teacher_id = teacher_id,
         hashed_password = hashed_password
     )
 

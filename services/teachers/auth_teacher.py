@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from datetime import timedelta 
 from  auth.security import  hash_password
 from  crud.teachers import teacher as teacher_crud
-from schemas.teachers.teacher import TeacherCreate,Login
+from schemas.teachers.teacher import TeacherCreate
 from crud.teachers.teacher import get_teacher_by_email
 from auth.security import verify_password, create_access_token
 
@@ -19,21 +19,20 @@ def register_new_teacher(db:Session,teacher_in:TeacherCreate):
         raise HTTPException(
             status_code = status.HTTP_400_BAD_REQUEST,
             detail = "A  teacher with this username already exists"
-             
         )
         
-    if teacher_crud.get_teacher_by_teacher_id(db,teacher_id = teacher_in.teacher_id):
-        raise HTTPException(
-            status_code= status.HTTP_406_NOT_ACCEPTABLE,
-            detail = "The teacher Id provided doesn't exists"
-        )
+    # if teacher_crud.get_teacher_by_teacher_id(db,teacher_id = teacher_in.teacher_id):
+    #     raise HTTPException(
+    #         status_code= status.HTTP_400_BAD_REQUEST,
+    #         detail = "The teacher Id provided doesn't exists"
+    #     )
     hashed_password = hash_password(teacher_in.password)
     
     return teacher_crud.create_teacher(
         db=db,
         username=teacher_in.username,
         email = teacher_in.email,
-        teacher_id = teacher_in.teacher_id,
+        # teacher_id = teacher_in.teacher_id,
         hashed_password = hashed_password 
     )
     

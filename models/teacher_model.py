@@ -11,6 +11,6 @@ class Teachers(Base):
     username = Column(String,unique=True)
     email = Column(String,unique=True,index=True,nullable=False)    
     hashed_password = Column(String,nullable=False)
-    teacher_id = Column(String)
+    # teacher_id = Column(String)
     # students = relationship("Student",secondary=teacher_class_association,back_populates="class_")
     classes = relationship("Class",secondary=teacher_class_association,back_populates="teachers")

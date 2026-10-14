@@ -11,20 +11,23 @@ from database import get_db
 def  get_student_by_email(db:Session,email:str):
     return (db.query(Student).filter(Student.email == email).first())
 
-def get_teacher_by_username(db:Session,username:str):
+def get_student_by_username(db:Session,username:str):
     return(db.query(Student).filter(Student.username == username).first())
 
-def create_student(db:Session,username:str,password:str,email:str):
+def get_class_code(db:Session,class_code:str):
+    return(db.query(Student).filter(Student))
+
+def create_student(db:Session,username:str,password:str,email:str,class_code):
     student = Student(
         username = username,
         email = email,
+        class_code = class_code,
         password = password,
     )
     
     db.add(student)
     db.commit()
     db.refresh(student)
-    
     return student
 
 
@@ -33,5 +36,5 @@ def create_student(db:Session,username:str,password:str,email:str):
 def get_student_email(db:Session,email:str):
     return db.query(Student).filter(Student.email == email).first()
 
-# def get_student_class_id(db:Session,email:str):
-#     return db.query(Student).fi
+def get_student_class_id(db:Session,class_id:str):
+    return db.query(Student).filter(Student.class_id == class_id).first()

@@ -3,13 +3,12 @@ from pydantic import BaseModel
 
 class ClassCreate(BaseModel):
     name: str
-    teacher_id: str
-
+    class_code:int
 
 class ClassResponse(BaseModel):
-    id: int
+    class_code: int
     name: str
-    teacher_id: int
+
 
     model_config = {
         "from_attributes": True

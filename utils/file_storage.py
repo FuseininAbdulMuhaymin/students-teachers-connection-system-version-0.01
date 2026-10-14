@@ -25,6 +25,6 @@ async def save_assignment_file(file:UploadFile)->tuple[str,str]:
         while chunk := await file.read(1024 * 1024):
             buffer.write(chunk)
             
-    file_url = f"file/assignments/{stored_filename}"
+    file_url = f"/file/assignments/{stored_filename}"
     
-    return  stored_filename
+    return  stored_filename,file_url
