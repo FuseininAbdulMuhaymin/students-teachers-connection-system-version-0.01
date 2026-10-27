@@ -6,7 +6,7 @@ from crud.students import student_crud
 from crud.students.student_crud import get_student_by_email
 from auth.security import verify_password,create_access_token
 from schemas.student_schemas import StudentCreate
-from  crud.class_crud import 
+from  crud.class_crud import classs_crud
 
 def register_new_student(db:Session,student_in:StudentCreate):
     if student_crud.get_student_by_email(db,email = student_in.email):
@@ -19,10 +19,10 @@ def register_new_student(db:Session,student_in:StudentCreate):
             status_code= status.HTTP_400_BAD_REQUEST,
             detail= "A Student with this username already exists"
         )
-    if student_crud.get_class_code(db:Session,class_code = student_in.class_code):
+    if classs_crud.get_class_code(db:Session,class_code = student_in.class_code) :
         raise HTTPException(
             status_code = status.HTTP_400_BAD_REQUEST,
-            detail="A "
+            detail="A class with this code already exists"
         )
 
     hashed_password =  hash_password(student_in.password)
@@ -47,7 +47,7 @@ def login_teacher(db:Session,email:str,password:str):
     
     #Verify password
     password_is_valid = verify_password(password,student.hashed_password)
-    
+
     if not password_is_valid:
         raise HTTPException(
             status_code = status.HTTP_401_UNAUTHORIZED,

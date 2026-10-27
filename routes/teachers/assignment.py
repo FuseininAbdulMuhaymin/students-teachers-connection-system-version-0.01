@@ -17,7 +17,7 @@ router = APIRouter(prefix="/teachers/Assginments",tags=["Asignments"])
 async def create_assignment_route(
     title: Annotated[str, Form()],
     description: Annotated[str, Form()],
-    class_id: Annotated[int, Form()],
+    class_code: Annotated[int, Form()],
     due_date: Annotated[datetime, Form()],
     file: Annotated[UploadFile, File()],
     db: Session = Depends(get_db),
@@ -28,7 +28,7 @@ async def create_assignment_route(
         title=title,
         description=description,
         due_date=due_date,
-        class_id=class_id,
+        class_code=class_code,
         teacher_id=current_teacher.id,
         file=file,
     )

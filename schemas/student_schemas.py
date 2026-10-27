@@ -4,8 +4,8 @@ from pydantic import BaseModel
 class StudentCreate(BaseModel):
     username: str
     email:str
-    password:str 
-    class_id: str
+    password:str
+    class_code: str
 
 class TokenResponse(BaseModel):
     access_token:str
@@ -13,7 +13,7 @@ class TokenResponse(BaseModel):
 class StudentResponse(BaseModel):
     id: int
     name: str
-    class_id: int
+    class_code: int
 
     model_config = {
         "from_attributes": True

@@ -10,7 +10,7 @@ from crud.teachers import assignment as assignment_crud
 from crud.class_crud import classs_crud
 from utils.file_storage import save_assignment_file
 
-async def create_assignment(db:Session,title:str,description:str,file_url:str,due_date:datetime,class_id:str,teacher_id:int,file):
+async def create_assignment(db:Session,title:str,description:str,file_url:str,due_date:datetime,class_code:str,teacher_id:int,file):
     #1.checking if the class exists
     school_class = classs_crud.get_class(db=db,class_id = class_id)
     
@@ -48,6 +48,6 @@ async def create_assignment(db:Session,title:str,description:str,file_url:str,du
         file_url=file_url,
         due_date=due_date,
         teacher_id=teacher_id,
-        class_id=class_id,
+        class_code=class_code,
          original_filename=file.filename
     )

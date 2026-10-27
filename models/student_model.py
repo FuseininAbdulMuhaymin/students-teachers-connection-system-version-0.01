@@ -8,7 +8,7 @@ class Student(Base):
     __tablename__ = "students"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    username = Column(String)
     email = Column(String)
     hashed_password = Column(String)
     class_code = Column(String)

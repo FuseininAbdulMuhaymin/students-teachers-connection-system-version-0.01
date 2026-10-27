@@ -17,7 +17,7 @@ def get_student_by_username(db:Session,username:str):
 def get_class_code(db:Session,class_code:str):
     return(db.query(Student).filter(Student))
 
-def create_student(db:Session,username:str,password:str,email:str,class_code):
+def create_student(db:Session,username:str,password:str,email:str,class_code:str):
     student = Student(
         username = username,
         email = email,
@@ -31,10 +31,10 @@ def create_student(db:Session,username:str,password:str,email:str,class_code):
     return student
 
 
-#Loging Teacher
+#Loging Student
 #This is talking  to the database to checking 
 def get_student_email(db:Session,email:str):
     return db.query(Student).filter(Student.email == email).first()
 
-def get_student_class_id(db:Session,class_id:str):
-    return db.query(Student).filter(Student.class_id == class_id).first()
+def get_student_class_id(db:Session,class_code:int):
+    return db.query(Student).filter(Student.class_code == class_code).first()

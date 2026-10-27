@@ -8,7 +8,7 @@ class Class(Base):
     __tablename__ = "classes"
 
     id = Column(Integer, primary_key=True)
-    class_code = Column(Integer,unique=True,nullable=False)
+    class_code = Column(String,unique=True,nullable=False)
     name = Column(String)
     
     
